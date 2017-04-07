@@ -27,13 +27,6 @@ The lamewrapper executable takes input from stdin.
 ./lamewrapper
 ```
 
-You can use redirection (or even pipes) to automate this.  See 
-template.in for example input file.
-
-```
-./lamewrapper < inputfile
-```
-
 You can also pass lamewrapper arguments as follows:
 
 ```
