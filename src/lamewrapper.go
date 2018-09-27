@@ -50,7 +50,7 @@ func getinput() string {
 // Encode stuff with lame.
 func encode(file string, song string, artist string, album string, genre string) {
 
-    cmd  := exec.Command("lame", "-b", "320", "-B", "320", "--tt", song, "--ta", artist, "--tl", album, "--tg", genre, file )
+    cmd  := exec.Command("lame", "-b", "320", "-B", "320", "-q", "0", "--tt", song, "--ta", artist, "--tl", album, "--tg", genre, file )
 
     fmt.Print("Encoding... ")
     err := cmd.Run()
