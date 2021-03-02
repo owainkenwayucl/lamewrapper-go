@@ -49,16 +49,22 @@ func getinput() string {
 
 // Encode stuff with lame.
 func encode(file string, song string, artist string, album string, genre string) {
-
-    cmd  := exec.Command("lame", "-b", "320", "-B", "320", "-q", "0", "--tt", song, "--ta", artist, "--tl", album, "--tg", genre, file )
-
-    fmt.Print("Encoding... ")
-    err := cmd.Run()
-    if err != nil {
-        fmt.Println("[ERROR]")
-        fmt.Println(err)
+    _, err := os.Stat(file)
+    if os.IsNotExist(err) {
+        fmt.Println("[ERROR] File \"" + file + "\" does not exist.")
+        os.Exit(1)
     } else {
-        fmt.Println("[Done]")
+        cmd  := exec.Command("lame", "-b", "320", "-B", "320", "-q", "0", "--tt", song, "--ta", artist, "--tl", album, "--tg", genre, file )
+
+        fmt.Print("Encoding... ")
+        err2 := cmd.Run()
+        if err2 != nil {
+            fmt.Println("[ERROR]")
+            fmt.Println(err2)
+            os.Exit(2)
+        } else {
+            fmt.Println("[Done]")
+        }
     }
 }
 
