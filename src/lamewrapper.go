@@ -22,6 +22,10 @@ func interactive() {
     fmt.Print(" File name: ")
     file := getinput()
 
+    if !(strings.HasSuffix(file, ".wav")) {
+        fmt.Print("\n >>> WARNING: LAME will treat file as raw WAV data <<<\n\n")
+    }
+
     fmt.Print(" Song name: ")
     song := getinput()
 
